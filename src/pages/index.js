@@ -1,13 +1,15 @@
 import React from "react"
-import { Link } from "gatsby"
 import SEO from "../components/seo"
 import styled from "styled-components";
+import { Link } from "gatsby"
+import { createGlobalStyle } from "styled-components";
 
 const IndexPage = () => (
   <PageLayout>
     <SEO title="README.md" />
 
-    <PageBorder></PageBorder>
+    <GlobalStyles />
+    <PageBorder />
 
     <NavList>
       <li>
@@ -32,6 +34,20 @@ const IndexPage = () => (
   </PageLayout>
 )
 
+const GlobalStyles = createGlobalStyle`
+  html {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  *, *::after, *::before {
+    box-sizing: inherit;
+  }
+`;
+
 const PageLayout = styled.div`
   display: flex;
   flex-direction: column;
@@ -55,7 +71,7 @@ const PageBorder = styled.div`
   border-top: 2px dotted transparent;
   transform: translateY(50%);
   transition: all 0.2s ease;
-  
+
   :hover {
     transform: translateY(0);
     border-color: white;
