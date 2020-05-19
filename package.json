@@ -28,8 +28,11 @@
   ],
   "license": "MIT",
   "scripts": {
+    "aws-cloudfront-invalidate": "aws cloudfront create-invalidation --distribution-id E2YASW78LJ8YLR --paths '/*' --profile circleci",
+    "aws-s3-sync": "aws s3 sync public s3://axyxnz.com --profile circleci",
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "deploy": "npm run build && npm run aws-s3-sync && npm run aws-cloudfront-invalidate",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
